@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# install / build 均为可选项；若自行尝试，产物不要入库
+*.spec
+
+# 忽略整个 .idea 目录
+.idea/
+# 忽略 PyCharm/IDEA 可能生成的模块文件
+*.iml
