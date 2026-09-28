@@ -12,7 +12,7 @@ from .converter import digits_to_chinese,num_to_chinese
 class App:
     def __init__(self,root):
         self.root = root
-        self.player = audio.Player
+        self.player = audio.Player()
 
         root.title("数字文本转语言")
         root.resizable(False,False)
