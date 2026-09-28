@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "number2speech"
+version = "1.0.0"
+description = "数字文本转中文语音：使用自研算法+自录音WAV逐字播放（全程没有使用TTS）"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [{name = "lloyd-kai"}]
+dependencies = []
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0","pyinstaller>=6.0"]
+
+[project.scripts]
+n2s = "number2speech.__main__:main"
+n2s-gui = "number2speech.gui:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_option]
+testpaths = ["test"]
+pythonpath = ["src"]
+
+
+
