@@ -1,5 +1,4 @@
 import os
-import sys
 import threading
 import time
 
@@ -22,7 +21,7 @@ ENV_ASSET_DIR = "N2S_ASSETS"
 # 素材目录解析
 def _project_asset_dir():
     here = os.path.dirname(os.path.abspath(__file__))
-    root = os.path.abspath(os.path.dirname(here))
+    root = os.path.dirname(os.path.dirname(here))
     return os.path.join(root, "assets")
 
 # 返回素材目录
@@ -58,7 +57,7 @@ class Player:
 
     def stop(self):
         self._stop.set()
-        winsound.PlaySound(None, winsound.SND_ASYNC)  # 掐断当前播放的片段
+        winsound.PlaySound(None, winsound.SND_PURGE)  # 掐断当前播放的片段
 
     def play(self,chinese_text,gap = 0.0):
         self._stop.clear()
@@ -67,6 +66,6 @@ class Player:
                 return
             path = wav_path(ch,self.asset_dir)
             if path and os.path.exists(path):
-                winsound.PlaySound(path,winsound.SND_FILENAME | winsound.SND_ASYNC)
+                winsound.PlaySound(path, winsound.SND_FILENAME)
                 if gap>0:
                     time.sleep(gap)
