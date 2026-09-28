@@ -1,4 +1,9 @@
-# 启动器保留
+"""
+项目启动器
+使用方法:
+    python number_to_speech.py [数字文本] 打开图形界面，可以打印该数字对应的中文读法
+    python number_to_speech.py --gui
+"""
 import os
 import sys
 

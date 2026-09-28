@@ -1,5 +1,7 @@
 import os
 import sys
+import threading
+
 import winsound
 
 AUDIO_MAP = {
@@ -14,17 +16,12 @@ OPTIONAL_CHARS = "点负"
 ENV_ASSET_DIR = "N2S_ASSETS"
 
 
-def default_asset_dir():
-    env = os.environ.get(ENV_ASSET_DIR)
-    if env:
-        return env                              # ① 环境变量手工指定，优先级最高
-    if getattr(sys, "frozen", False):           # ② PyInstaller 打包后
-        external = os.path.join(_frozen_dir(), "assets")
-        if os.path.isdir(external):
-            return external                     #    exe 同级优先：换录音不用重打包
-        if hasattr(sys, "_MEIPASS"):
-            return os.path.join(sys._MEIPASS, "assets")  # 单文件模式的解压临时目录
-    cwd = os.path.join(os.getcwd(), "assets")
-    if os.path.isdir(cwd):
-        return cwd                              # ③ 当前工作目录
-    return _project_asset_dir()                 # ④ 项目根（从 __file__ 上溯两级）
+# 素材目录三级解析
+
+
+# 播放器类
+class Player:
+    def __init__(self,asset_dir=None):
+        self.asset_dir = asset_dir or default_asset_dir()
+        self._stop = threading.Event()
+

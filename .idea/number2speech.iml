@@ -7,4 +7,9 @@
     <orderEntry type="jdk" jdkName="~\anaconda3\envs\SoftwareENV" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
+  <component name="PyDocumentationSettings">
+    <option name="format" value="GOOGLE" />
+  </component>
+  <component name="ReSTService" />
+  <component name="TestRunnerService" />
 </module>
